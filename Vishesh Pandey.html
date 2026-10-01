@@ -1,0 +1,381 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Vishesh Pandey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky identity rail on the left, project and hackathon record on the right; stacks on phones. */
+:root {
+  --bg: #ffffff;
+  --surface: #f5f7f9;
+  --fg: #14181f;
+  --muted: #566170;
+  --line: #dde2e8;
+  --accent: #0b7a75;
+  --accent-ink: #ffffff;
+  --grain-invert: 0;
+  --font-display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-inline: 20px;
+  padding-block: 40px 64px;
+}
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.wrap {
+  max-width: 1080px;
+  margin-inline: auto;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 900px) {
+  .wrap { grid-template-columns: 300px minmax(0, 1fr); gap: 72px; }
+  .rail { position: sticky; top: 40px; align-self: start; }
+}
+
+/* Rail */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(44px, 9vw, 64px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  margin: 14px 0 18px;
+  text-wrap: balance;
+}
+h1 span { color: var(--accent); }
+.lead { color: var(--fg); font-size: 20px; line-height: 1.4; font-weight: 500; max-width: 26ch; margin: 0 0 26px; }
+.facts { margin: 0 0 28px; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 14px; }
+.facts li { display: grid; gap: 2px; }
+.facts b { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.contact { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.contact[hidden] { display: none; }
+.contact a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--fg);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.contact a:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.contact .mail { font-family: var(--font-mono); font-size: 13px; border-style: dashed; user-select: all; }
+
+/* Sections */
+section + section { margin-top: 56px; }
+h2 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--fg);
+}
+.about { font-size: 18px; max-width: 58ch; margin: 22px 0 0; }
+
+.project {
+  display: grid;
+  gap: 6px 28px;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: 22px;
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 640px) {
+  .project { grid-template-columns: 120px minmax(0, 1fr); }
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 6px;
+}
+.project h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+}
+.project p { margin: 0; color: var(--muted); max-width: 60ch; }
+.project .meta { margin-top: 10px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.project .links { display: flex; gap: 16px; margin-top: 12px; }
+.project .links a { font-size: 14px; font-weight: 600; color: var(--accent); text-underline-offset: 3px; }
+.project .links[hidden] { display: none; }
+
+.events { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.events li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+footer { margin-top: 56px; font-size: 13px; color: var(--muted); font-family: var(--font-mono); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Background: a flow field of drifting lines that bends around the cursor, with film grain on top. */
+#field { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; display: block; }
+.grain {
+  position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0.07;
+  filter: invert(var(--grain-invert));
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.wrap { position: relative; z-index: 1; }
+main {
+  background: color-mix(in srgb, var(--bg) 74%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 22px 28px;
+}
+@media (min-width: 900px) { main { padding: 12px 36px 36px; } }
+.project h3 { transition: color .2s ease, transform .2s ease; }
+.project:hover h3 { color: var(--accent); transform: translateX(4px); }
+.events li { transition: border-color .2s ease, transform .2s ease; }
+.events li:hover { border-color: var(--accent); transform: translateY(-2px); }
+</style>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="rail">
+    <div class="eyebrow">Portfolio</div>
+    <h1>Vishesh <span>Pandey</span></h1>
+    <p class="lead">I build AI that works end to end, from the model to a live demo.</p>
+    <ul class="facts">
+      <li><b>Studying</b>B.Tech Computer Science and Engineering, 3rd year</li>
+      <li><b>College</b>Acropolis Institute of Technology and Research, Indore</li>
+    </ul>
+    <ul class="contact" id="contact" hidden>
+      <li data-key="github" hidden><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+      <li data-key="linkedin" hidden><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li data-key="email" hidden><span class="mail"></span></li>
+    </ul>
+  </header>
+
+  <main>
+    <section>
+      <h2>About</h2>
+      <p class="about">I'm a third-year CSE student who learns by building, and AI and machine learning is where I'm most comfortable. My projects so far include AI agents that plan and tutor, an image classifier for lunar terrain, and security tools for Android malware and threat detection. I compete in hackathons regularly and work best in a small team with a clear scope.</p>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+
+      <article class="project">
+        <div class="tag">Machine learning</div>
+        <div>
+          <h3>The Pareidolia Paradox</h3>
+          <p>A classifier for lunar surface images that tells craters from mounds, built for a competition of the same name.</p>
+          <div class="links" hidden></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="tag">AI agent</div>
+        <div>
+          <h3>TravelPilot AI</h3>
+          <p>An agent that plans a trip end to end, from choosing a destination to laying out the days.</p>
+          <div class="links" hidden></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="tag">AI agent</div>
+        <div>
+          <h3>StudyPilot AI</h3>
+          <p>An adaptive learning agent that adjusts what a student studies next based on how they are doing.</p>
+          <div class="links" hidden></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="tag">Security</div>
+        <div>
+          <h3>APK-Sentinel</h3>
+          <p>An analysis pipeline for Android malware. It takes an APK through a series of checks and reports what it finds.</p>
+          <div class="links" hidden></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="tag">Security</div>
+        <div>
+          <h3>SentinelTrace</h3>
+          <p>A prototype that detects suspicious behavior and correlates related events into a single incident.</p>
+          <div class="meta">Built for HACKINDORE 4.0, Cybersecurity track</div>
+          <div class="links" hidden></div>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2>Hackathons</h2>
+      <ul class="events">
+        <li>Hack a Spirit</li>
+        <li>HACKINDORE 4.0</li>
+        <li>SquidHack 2026</li>
+        <li>AI for Impact</li>
+      </ul>
+    </section>
+
+    <footer>Vishesh Pandey, 2026</footer>
+  </main>
+</div>
+
+<script>
+/* Fill these in. Anything left empty stays hidden on the page. */
+var CONFIG = {
+  github: "",
+  linkedin: "",
+  email: "",
+  projects: {
+    "TravelPilot AI": { code: "", demo: "https://frontend-one-xi-29.vercel.app/" },
+    "APK-Sentinel": { code: "", demo: "https://apk-analyzer-eosin.vercel.app/" },
+    "SentinelTrace": { code: "", demo: "https://web-rho-inky-22.vercel.app/incidents?sort=-window_start" },
+    "StudyPilot AI": { code: "", demo: "" },
+    "The Pareidolia Paradox": { code: "", demo: "" }
+  }
+};
+(function () {
+  var any = false;
+  document.querySelectorAll("#contact [data-key]").forEach(function (li) {
+    var v = CONFIG[li.getAttribute("data-key")];
+    if (!v) return;
+    var a = li.querySelector("a"), s = li.querySelector(".mail");
+    if (a) a.href = v; if (s) s.textContent = v;
+    li.hidden = false; any = true;
+  });
+  document.getElementById("contact").hidden = !any;
+  document.querySelectorAll(".project").forEach(function (p) {
+    var name = p.querySelector("h3").textContent, c = CONFIG.projects[name], box = p.querySelector(".links");
+    if (!c || !box) return;
+    [["code", "Code"], ["demo", "Live demo"]].forEach(function (k) {
+      if (!c[k[0]]) return;
+      var a = document.createElement("a");
+      a.href = c[k[0]]; a.textContent = k[1]; a.target = "_blank"; a.rel = "noopener";
+      box.appendChild(a); box.hidden = false;
+    });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var cv = document.getElementById("field"), ctx = cv.getContext("2d");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var W, H, dpr, P = [], t = 0, frame = 0, mx = -9999, my = -9999, bg, ac, fg;
+
+  var perm = new Uint8Array(512);
+  (function () {
+    var p = [], i, s = 11;
+    for (i = 0; i < 256; i++) p[i] = i;
+    function r() { s = (s * 16807) % 2147483647; return s / 2147483647; }
+    for (i = 255; i > 0; i--) { var j = Math.floor(r() * (i + 1)), q = p[i]; p[i] = p[j]; p[j] = q; }
+    for (i = 0; i < 512; i++) perm[i] = p[i & 255];
+  })();
+  function fd(x) { return x * x * x * (x * (x * 6 - 15) + 10); }
+  function lp(a, b, x) { return a + (b - a) * x; }
+  function gr(h, x, y) { switch (h & 3) { case 0: return x + y; case 1: return -x + y; case 2: return x - y; default: return -x - y; } }
+  function noise(x, y) {
+    var X = Math.floor(x) & 255, Y = Math.floor(y) & 255;
+    x -= Math.floor(x); y -= Math.floor(y);
+    var u = fd(x), v = fd(y), a = perm[X] + Y, b = perm[X + 1] + Y;
+    return lp(lp(gr(perm[a], x, y), gr(perm[b], x - 1, y), u), lp(gr(perm[a + 1], x, y - 1), gr(perm[b + 1], x - 1, y - 1), u), v);
+  }
+
+  function rgb(h) {
+    h = String(h).trim().replace("#", "");
+    if (h.length === 3) h = h.split("").map(function (c) { return c + c; }).join("");
+    var n = parseInt(h, 16);
+    return isNaN(n) ? [128, 128, 128] : [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function readTheme() {
+    var cs = getComputedStyle(document.documentElement), old = bg ? bg.join() : "";
+    bg = rgb(cs.getPropertyValue("--bg")); ac = rgb(cs.getPropertyValue("--accent")); fg = rgb(cs.getPropertyValue("--fg"));
+    return old !== bg.join();
+  }
+  function solid() { ctx.globalAlpha = 1; ctx.fillStyle = "rgb(" + bg.join() + ")"; ctx.fillRect(0, 0, W, H); }
+
+  function spawn(p, initial) {
+    p.x = Math.random() * W; p.y = Math.random() * H; p.px = p.x; p.py = p.y;
+    p.life = 120 + Math.random() * 260; p.age = initial ? Math.random() * p.life : 0;
+    p.k = Math.random() < 0.24 ? 1 : 0;
+  }
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = W < 640 ? Math.min(520, Math.floor(W * H / 2400)) : Math.min(1500, Math.floor(W * H / 1700));
+    P = []; for (var i = 0; i < n; i++) { var p = {}; spawn(p, true); P.push(p); }
+    readTheme(); solid();
+    if (reduce) still();
+  }
+
+  function advance(batchA, batchF, tt) {
+    var S = 0.0017;
+    for (var i = 0; i < P.length; i++) {
+      var p = P[i];
+      var a = noise(p.x * S + tt * 0.00011, p.y * S - tt * 0.00008) * 6.9;
+      var dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy, sp = 0.95;
+      if (d2 < 48400) { var d = Math.sqrt(d2), k = 1 - d / 220; a += k * k * 2.6 * (dx > 0 ? 1 : -1); sp += k * 1.4; }
+      p.px = p.x; p.py = p.y;
+      p.x += Math.cos(a) * sp; p.y += Math.sin(a) * sp; p.age++;
+      var b = p.k ? batchF : batchA;
+      b.moveTo(p.px, p.py); b.lineTo(p.x, p.y);
+      if (p.age > p.life || p.x < -5 || p.x > W + 5 || p.y < -5 || p.y > H + 5) spawn(p, false);
+    }
+  }
+  function draw(fade) {
+    if (fade < 1) { ctx.globalAlpha = fade; ctx.fillStyle = "rgb(" + bg.join() + ")"; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+    var A = new Path2D(), F = new Path2D();
+    advance(A, F, t);
+    ctx.lineWidth = 0.9; ctx.lineCap = "round";
+    ctx.strokeStyle = "rgba(" + ac.join() + ",0.42)"; ctx.stroke(A);
+    ctx.strokeStyle = "rgba(" + fg.join() + ",0.14)"; ctx.stroke(F);
+  }
+  function still() { solid(); for (var i = 0; i < 300; i++) { t += 16; draw(1); } }
+
+  function loop() {
+    t += 16; frame++;
+    if (frame % 40 === 0 && readTheme()) solid();
+    draw(0.07);
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+  window.addEventListener("pointerleave", function () { mx = my = -9999; });
+  window.addEventListener("resize", resize);
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { setTimeout(function () { readTheme(); solid(); if (reduce) still(); }, 50); });
+  resize();
+  if (!reduce) requestAnimationFrame(loop);
+})();
+</script>
+
+</body></html>
